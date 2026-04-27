@@ -256,6 +256,124 @@
     }
     .pricing-table tr:last-child td { border-bottom: none; }
     .pricing-table td strong { color: #ffd700; }
+
+    /* Logo Section */
+    .logo-section {
+      text-align: center;
+      margin: 40px auto;
+      max-width: 1120px;
+      padding: 0 18px;
+    }
+    .logo-display {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--bronze), var(--bronze-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(176, 122, 47, 0.3);
+      overflow: hidden;
+    }
+    .logo-display img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Portfolio Slideshow Styles */
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      margin: 20px auto;
+      background: linear-gradient(135deg, #19120c 70%, #23284d 100%);
+      border: 1px solid #2c2113;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(32, 24, 11, 0.5);
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      position: relative;
+    }
+    .slide.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 500px;
+      background: #0f0f10;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      margin: 12px;
+      max-height: 480px;
+    }
+    .slide-counter {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffd700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: 50px;
+      padding: 12px;
+      margin-top: -22px;
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 0.3s ease;
+      border-radius: 8px;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      z-index: 10;
+    }
+    .next {
+      right: 0;
+    }
+    .prev {
+      left: 0;
+    }
+    .prev:hover, .next:hover {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+    }
+    .dots {
+      text-align: center;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 6px;
+      background-color: rgba(255, 215, 0, 0.4);
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+    }
+    .dot.active {
+      background-color: #ffd700;
+    }
+    .dot:hover {
+      background-color: rgba(255, 215, 0, 0.7);
+    }
   </style>
 </head>
 <body>
@@ -274,6 +392,7 @@
         <a href="#about">About</a>
         <a href="#books">Books</a>
         <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#play">Play Zone</a>
         <a href="#pricing">Pricing</a>
         <a href="#downloads">Downloads</a>
@@ -288,8 +407,7 @@
     <div>
       <h1 class="hero-title">Scribe Haus Writing, Books, & Creative Studio</h1>
       <p class="lead muted hero-desc">
-        We create stories, designs, and ideas that inspire. From books and journals to branding, editing, and digital projects, Scribe Haus blends words and visuals into powerful, polished creations.<br>
-        <span class="rainbow-text">Bring your story to life!</span>
+        We create stories, designs, and ideas that inspire. From books and journals to branding, editing, and digital projects, Scribe Haus blends words and visuals into powerful, polished creations.<br><span class="rainbow-text">Bring your story to life!</span>
       </p>
       <div class="hero actions">
         <button class="btn primary glossy-btn" onclick="document.getElementById('books').scrollIntoView({behavior:'smooth'})">See Books</button>
@@ -304,12 +422,19 @@
   </div>
 
   <main>
+    <!-- Logo -->
+    <section class="logo-section" aria-labelledby="logo-title">
+      <h2 id="logo-title" style="color: var(--bronze-2); font-family: 'Playfair Display', serif; margin-bottom: 20px;">Scribe Haus Logo</h2>
+      <div class="logo-display">
+        <img src="images/E736DA02-6422-4236-8FC7-6015EA6085A5.png" alt="Scribe Haus Logo" onerror="this.parentElement.textContent='Logo'">
+      </div>
+    </section>
+
     <!-- About -->
     <section id="about" class="block" aria-labelledby="about-title">
       <h2 id="about-title">About Scribe Haus</h2>
       <div class="card">
-        <p class="muted">Hi, I’m Akosua. Scribe Haus is a creative studio for books, writing, editing, design, branding, and digital projects. I work with individuals, businesses, and creators across all genres and industries. From memoirs to fiction, poetry, educational resources, websites, and brand identity, every project is crafted with care and attention to detail.
-          .</p>
+        <p class="muted">Hi, I'm Akosua. Scribe Haus is a creative studio for books, writing, editing, design, branding, and digital projects. I work with individuals, businesses, and creators across all industries and ages.</p>
       </div>
     </section>
 
@@ -372,6 +497,80 @@
         </div>
       </div>
       <div style="margin-top:12px"><button class="btn primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button></div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="block" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title">My Works & Projects</h2>
+      <p class="small muted">A collection of designs, illustrations, and creative projects.</p>
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="images/Festival.png" alt="Festival">
+          <div class="slide-counter"><span id="current-slide">1</span>/<span id="total-slides">12</span></div>
+        </div>
+        <div class="slide">
+          <img src="images/IMG_0557.jpeg" alt="IMG_0557">
+          <div class="slide-counter"><span id="current-slide">2</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/IMG_1525.png" alt="IMG_1525">
+          <div class="slide-counter"><span id="current-slide">3</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/IMG_3144.png" alt="IMG_3144">
+          <div class="slide-counter"><span id="current-slide">4</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/THE TWINS - 1.png" alt="THE TWINS">
+          <div class="slide-counter"><span id="current-slide">5</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/file_tiny_thoughts_big_power.png" alt="Tiny Thoughts Big Power">
+          <div class="slide-counter"><span id="current-slide">6</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/temp_image_560D0764-F6CC-4ECF-BE53-3FF2ACEA0FF9.webp" alt="Work 7">
+          <div class="slide-counter"><span id="current-slide">7</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/temp_image_68042764-AB9D-47D6-84F4-0B08E235C74F.webp" alt="Work 8">
+          <div class="slide-counter"><span id="current-slide">8</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/temp_image_70865776-CBB6-4FA6-A75B-057FDF9CB57C.webp" alt="Work 9">
+          <div class="slide-counter"><span id="current-slide">9</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/temp_image_9E4013EB-B96F-41D0-8F85-694591325FF6.webp" alt="Work 10">
+          <div class="slide-counter"><span id="current-slide">10</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/temp_image_CE583AB7-FDEA-449F-AAD8-6A761A4A0824.webp" alt="Work 11">
+          <div class="slide-counter"><span id="current-slide">11</span>/12</div>
+        </div>
+        <div class="slide">
+          <img src="images/temp_image_EEBBA6BD-DCD4-4169-A154-6947B1375FF4.webp" alt="Work 12">
+          <div class="slide-counter"><span id="current-slide">12</span>/12</div>
+        </div>
+
+        <a class="prev" onclick="changeSlide(-1)">❮</a>
+        <a class="next" onclick="changeSlide(1)">❯</a>
+
+        <div class="dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+          <span class="dot" onclick="goToSlide(4)"></span>
+          <span class="dot" onclick="goToSlide(5)"></span>
+          <span class="dot" onclick="goToSlide(6)"></span>
+          <span class="dot" onclick="goToSlide(7)"></span>
+          <span class="dot" onclick="goToSlide(8)"></span>
+          <span class="dot" onclick="goToSlide(9)"></span>
+          <span class="dot" onclick="goToSlide(10)"></span>
+          <span class="dot" onclick="goToSlide(11)"></span>
+        </div>
+      </div>
     </section>
 
     <!-- PLAY ZONE - With lively custom images and animation -->
@@ -511,7 +710,7 @@
             <a href="files/affirmation-cards.pdf" download>Mini Affirmation Cards (PDF)</a>
             <a href="files/activity-pack.zip" download>Activity Pack (ZIP)</a>
           </div>
-          <p class="small muted" style="margin-top:8px">/files/</code>.</p>
+          <p class="small muted" style="margin-top:8px">All files available in /files/ directory.</p>
         </div>
         <div class="card">
           <h4>For Adults</h4>
@@ -529,7 +728,7 @@
       <h2 id="inspo-title">Inspiration & Tips</h2>
       <div class="cols cols-3">
         <div class="card"><h4>Daily Tip</h4><p class="muted">Split big goals into short, lovely blocks ten minutes of focus is still progress.</p></div>
-        <div class="card"><h4>Quote</h4><p class="muted">“Write what should not be forgotten.” a nudge to keep creating.</p></div>
+        <div class="card"><h4>Quote</h4><p class="muted">"Write what should not be forgotten." a nudge to keep creating.</p></div>
         <div class="card"><h4>Affirmation</h4><p class="muted">I am kind to my small, steady steps.</p></div>
       </div>
     </section>
@@ -573,7 +772,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // AFFIRMATIONS
-    const AFFIRMATIONS = ["I am brave.","I am loved.","I am patient.","I am curious.","I am creative.","I am strong.","I can ask for help.","I am kind.","I am capable.","I try new things.","I am joyful.","I respect others."];
+    const AFFIRMATIONS = ["I am brave.","I am loved.","I am patient.","I am curious.","I am creative.","I am strong.","I can ask for help.","I am kind.","I am capable.","I try new things.","I am joyful."];
     function spinAffirmation(){
       const out = document.getElementById('spin-out');
       const btn = document.getElementById('spin-btn');
@@ -587,7 +786,7 @@
     }
 
     // PROMPTS
-    const PROMPTS = ["Draw your dream house and label three rooms.","Write five lines that begin with 'I imagine...'.","Invent a superhero and their kindest power.","Design a book cover for your future self.","Write a thank-you note to your future self."];
+    const PROMPTS = ["Draw your dream house and label three rooms.","Write five lines that begin with 'I imagine...'.","Invent a superhero and their kindest power.","Design a book cover for your future memoir.","Write a letter to your 10-year-old self."];
     function newPrompt(id='prompt-out'){ const el = document.getElementById(id); if(!el) return; el.textContent = PROMPTS[Math.floor(Math.random()*PROMPTS.length)]; }
 
     // QUIZ
@@ -635,7 +834,7 @@
         memoState.locked=true;
         setTimeout(()=>{
           const [a,b]=memoState.flipped;
-          if(a.dataset.icon===b.dataset.icon){ a.disabled=b.disabled=true; memoState.matched++; if(memoState.matched===MEMO_ICONS_BASE.length){ document.getElementById('memory-status').textContent='You matched them all! 🎉'; } }
+          if(a.dataset.icon===b.dataset.icon){ a.disabled=b.disabled=true; memoState.matched++; if(memoState.matched===MEMO_ICONS_BASE.length){ document.getElementById('memory-status').textContent='You won! 🎉'; } }
           else { a.textContent=b.textContent='❒'; }
           memoState.flipped=[]; memoState.locked=false;
         },600);
@@ -645,7 +844,7 @@
     // SCRAMBLE
     const SCRAMBLE_WORDS = ["imagine","wonder","brave","create","storybook","joyful"];
     let currentSolution='';
-    function scrambleWord(){ const out = document.getElementById('scramble-out'); const pick = SCRAMBLE_WORDS[Math.floor(Math.random()*SCRAMBLE_WORDS.length)]; currentSolution = pick; out.textContent = pick.split('').sort(()=>Math.random()-0.5).join(' '); }
+    function scrambleWord(){ const out = document.getElementById('scramble-out'); const pick = SCRAMBLE_WORDS[Math.floor(Math.random()*SCRAMBLE_WORDS.length)]; currentSolution = pick; out.textContent = pick.split('').sort(()=>Math.random()-0.5).join(''); }
     function revealSolution(){ const out = document.getElementById('scramble-out'); out.textContent = currentSolution || 'Press Shuffle'; }
 
     // 5-minute timer
@@ -661,6 +860,33 @@
       },1000);
     }
     function stopTimer(){ if(timerInterval){ clearInterval(timerInterval); timerInterval=null; const display=document.getElementById('timer-display'); if(display) display.textContent='00:05:00'; } }
+
+    // SLIDESHOW CONTROLS
+    let currentSlide = 0;
+    const totalSlides = 12;
+
+    function changeSlide(n) {
+      currentSlide += n;
+      if(currentSlide >= totalSlides) currentSlide = 0;
+      if(currentSlide < 0) currentSlide = totalSlides - 1;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      showSlide(currentSlide);
+    }
+
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      slides[n].classList.add('active');
+      dots[n].classList.add('active');
+    }
 
     // Init
     document.addEventListener('DOMContentLoaded', ()=>{
